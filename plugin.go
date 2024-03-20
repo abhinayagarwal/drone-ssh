@@ -110,10 +110,10 @@ func (p Plugin) exec(host string, wg *sync.WaitGroup, errChannel chan error) {
 	p.log(host, "======END======")
 
 	env := []string{}
-	if p.Config.AllEnvs {
+	/* if p.Config.AllEnvs {
 		allenvs := findEnvs("DRONE_", "PLUGIN_", "INPUT_", "GITHUB_")
 		p.Config.Envs = append(p.Config.Envs, allenvs...)
-	}
+	} */
 	for _, key := range p.Config.Envs {
 		key = strings.ToUpper(key)
 		if val, found := os.LookupEnv(key); found {
